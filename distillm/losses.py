@@ -144,6 +144,12 @@ def dtw_distillation_loss(
     student_hiddens = student_hidden_states[-1]
     teacher_hiddens = teacher_hidden_states[-1].detach()
 
+    if projector is None and student_hiddens.size(-1) != teacher_hiddens.size(-1):
+        raise ValueError(
+            "DTW loss requires a projector when student/teacher hidden sizes differ: "
+            f"{student_hiddens.size(-1)} vs {teacher_hiddens.size(-1)}"
+        )
+
     projected_student_hiddens = _get_projected(student_hiddens, projector)
     projected_teacher_hiddens = teacher_hiddens
 
