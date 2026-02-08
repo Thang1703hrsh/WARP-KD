@@ -1,0 +1,10 @@
+wandb:
+  enabled: true
+  project: "contra-kd"
+  key: "805aa2820287a1e13bc742e36b4a5081dd2e8894"
+  
+  names:
+    sft: null
+    init: null
+    velocity_field: null
+    contra_kd: null
